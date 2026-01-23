@@ -8,6 +8,10 @@ const openai = new OpenAI({
 
 export async function POST(request: NextRequest) {
   try {
+    // Debug: Verificar se a variável está sendo lida
+    console.log('OPENAI_API_KEY presente:', !!process.env.OPENAI_API_KEY);
+    console.log('Primeiros caracteres:', process.env.OPENAI_API_KEY?.substring(0, 10));
+
     // Validar se a API key está configurada
     if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(
