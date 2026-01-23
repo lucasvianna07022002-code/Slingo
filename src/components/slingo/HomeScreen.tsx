@@ -251,27 +251,6 @@ export default function HomeScreen({ onAddMeal, onAddWorkout, userProfile }: Hom
         />
       </div>
 
-      {/* Macros Summary */}
-      {hasAnyMeal && (
-        <div className="bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 rounded-2xl p-4">
-          <h3 className="text-sm font-semibold text-slate-700 mb-3">Macronutrientes de Hoje</h3>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="text-center">
-              <p className="text-xs text-slate-500 mb-1">Carboidratos</p>
-              <p className="text-lg font-bold text-blue-600">{dailyTotals.carbs}g</p>
-            </div>
-            <div className="text-center">
-              <p className="text-xs text-slate-500 mb-1">Proteínas</p>
-              <p className="text-lg font-bold text-green-600">{dailyTotals.protein}g</p>
-            </div>
-            <div className="text-center">
-              <p className="text-xs text-slate-500 mb-1">Gorduras</p>
-              <p className="text-lg font-bold text-purple-600">{dailyTotals.fat}g</p>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Water Bar - Nova posição */}
       <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-2xl p-4">
         <div className="flex items-center justify-between mb-3">
