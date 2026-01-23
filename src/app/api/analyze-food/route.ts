@@ -9,7 +9,7 @@ const openai = new OpenAI({
 export async function POST(request: NextRequest) {
   try {
     // Validar se a API key está configurada
-    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY.includes('***')) {
+    if (!process.env.OPENAI_API_KEY) {
       return NextResponse.json(
         { error: 'OpenAI API key não configurada. Configure OPENAI_API_KEY no arquivo .env' },
         { status: 500 }
