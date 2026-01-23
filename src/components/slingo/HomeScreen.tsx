@@ -442,14 +442,17 @@ function MealCard({
   onAdd?: () => void;
   isOther?: boolean;
 }) {
+  // Cards "Outros" são sempre clicáveis para adicionar mais itens
+  const isClickable = !completed || isOther;
+
   return (
     <div
       className={`p-4 rounded-2xl border transition-all duration-300 ${
         completed
           ? "bg-white border-slate-200 hover:border-slate-300"
-          : "bg-slate-50/50 border-slate-200 border-dashed hover:bg-slate-100/50 cursor-pointer"
-      }`}
-      onClick={!completed ? onAdd : undefined}
+          : "bg-slate-50/50 border-slate-200 border-dashed hover:bg-slate-100/50"
+      } ${isClickable ? "cursor-pointer" : ""}`}
+      onClick={isClickable ? onAdd : undefined}
     >
       <div className="flex items-start gap-3">
         <div
@@ -472,6 +475,9 @@ function MealCard({
               <div className="flex items-center gap-2">
                 <Flame className="w-3.5 h-3.5 text-orange-500" />
                 <span className="text-xs font-medium text-slate-700">{calories} kcal</span>
+                {isOther && (
+                  <span className="text-xs text-blue-600 ml-auto">+ Adicionar mais</span>
+                )}
               </div>
             </>
           ) : (
