@@ -342,8 +342,28 @@ function StatCard({
 }
 
 function AddPhotoCard() {
+  const fileInputRef = useState<HTMLInputElement | null>(null)[0];
+
+  const handleClick = () => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0];
+      if (file) {
+        // Aqui você pode processar a imagem
+        console.log('Foto selecionada:', file);
+        // TODO: Implementar upload e armazenamento da foto
+      }
+    };
+    input.click();
+  };
+
   return (
-    <button className="aspect-square rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-slate-400 transition-all duration-300 flex flex-col items-center justify-center gap-2">
+    <button
+      onClick={handleClick}
+      className="aspect-square rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 hover:bg-slate-100 hover:border-slate-400 transition-all duration-300 flex flex-col items-center justify-center gap-2 cursor-pointer active:scale-95"
+    >
       <Camera className="w-6 h-6 text-slate-400" />
       <span className="text-xs text-slate-500 font-medium">Adicionar</span>
     </button>
